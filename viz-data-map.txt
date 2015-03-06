@@ -1,0 +1,68 @@
+There might be multiple columns with same name. This redundancy occurs because data
+is passed through multiple phases. Call, SMS, Location and Application probes
+records a lots of metadata. I listed the columns that would be most useful.
+
+
+GRAPH ONE 
+
+Inner GraphRunningApplicationProbe.csv:
+    duration: Duration of the application usage in seconds. 
+    taskInfo_baseIntent_mComponent_mPackage: Name of the application being used
+    timestamp: Time stamp of when the data was recorded
+    app_name: Name of app used
+    app_color: HEX value of app to be used in graph display 
+    app_icon: id of app_icon to be used in viz
+
+ScreenProbe.csv:
+Only Screen on (screenOn = TRUE) is graphed. 
+    id: Index of the row.
+    device: Id of the device.
+    screenOn: true or false - Is it screen-on or screen-off event  
+    timestamp: Timestamp of the event.
+    duration: length of time screen was on / off for in seconds.
+     
+
+GRAPH TWO
+LocationProbe.csv:
+    mLatitude: Latitude.
+    mLongitude: Longitude
+    mProvider: Provider of the location data (Mobile Netowork, GPS).
+    timestamp: Time stamp of when the location was recorded.
+    location_id: unique id of the location (0 = no data, -1 = travel)
+    location_color: HEX color value to be used in graph
+    duration: length of time in the location
+
+
+GRAPH THREE
+Outgoing communications mapped to inner graph. 
+Incoming communication mapped to outer graph. 
+
+Outgoing communication from both csv files to be used to create inner graph. 
+Incoming communication from both csv files to be used to create outer graph. 
+
+SMSProbe.csv: 
+    id: Index of the row.
+    device: Id of the device.
+    address: The address of the sender or receiver.
+    date: The date the message was sent or received.
+    timestamp: Time when call was made or received.
+    comm_type: (incoming or outgoing)
+
+CallLogProbe.csv:
+
+    id: Index of the row.
+    device: Id of the device.
+    _id: Id of the row for internal processing.
+    date: Date when the call was made.
+    duration: Duration of the call.
+    name: Name of the contact.
+    number: Number of the contact.
+    numberlabel: If the number has associated label.
+    numbertype: Type of phone number (Home, office).
+    timestamp: Time when call was made or recieved.
+    comm_type: (incoming or outgoing)
+
+
+
+
+
